@@ -38,15 +38,17 @@ struct n_root<3, DataT>
 * Samples a point uniformly in an N-ball center at origin
 * @tparam   N           Template argument
 * @tparam   DataT       Point data type
+* @tparam   PointT      The center point type. Must be addressable by [] operator
 * @tparam   PointT      The output point type. Must be addressable by [] operator
 * @param    radius      The radius of the N-ball
-* @param    point       The sampled point
+* @param    center      The center of the N-ball
 * @param    seed        The seed for the random number generator
+* @param    point       The sampled point
 * @param    thread_id   If multithreaded calls are used, this helps the generator 
 *                       produce unique results per thread by using different seeds
 **/
-template <unsigned int N, typename DataT, typename PointT> void
-UniformSampleNBall(const DataT radius, const PointT& center, PointT& point, unsigned int seed, unsigned int thread_id = 0)
+template <unsigned int N, typename DataT, typename CenterPointT, typename PointT> void
+UniformSampleNBall(const DataT radius, const CenterPointT& center, unsigned int seed, PointT& point, unsigned int thread_id = 0)
 {
     static thread_local std::mt19937 generator(seed + thread_id);
     std::uniform_real_distribution<DataT> mag_distribution(0.0, 1.0);

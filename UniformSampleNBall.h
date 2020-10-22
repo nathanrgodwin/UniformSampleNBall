@@ -44,7 +44,7 @@ struct n_root<3, DataT>
 * @param    center      The center of the N-ball
 * @param    seed        The seed for the random number generator
 * @param    point       The sampled point
-* @param    thread_id   If multithreaded calls are used, this helps the generator 
+* @param    thread_id   If multithreaded calls are used, this helps the generator
 *                       produce unique results per thread by using different seeds
 **/
 template <unsigned int N, typename DataT, typename CenterPointT, typename PointT> void
